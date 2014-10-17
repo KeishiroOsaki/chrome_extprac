@@ -1,8 +1,9 @@
-chrome.tabs.onUpdated.addListener (tabId, changeInfo, tab) ->
-  if tab.url.indexOf('google') != -1
-    chrome.pageAction.show tabId
-
-chrome.pageAction.onClicked.addListener ->
-  chrome.tabs.executeScript null, {
-    "code": "document.body.style.backgroundColor = 'red'"
-  }
+chrome.contextMenus.create {
+  "title": "\"%s\"をALCで検索"
+  "type": "normal"
+  "contexts": ["selection"]
+  "onclick": (info) ->
+    keyword = encodeURIComponent info.selectionText
+    url = "http://eow.alc.co.jp/search?q=#{keyword}&ref=sa"
+    chrome.tabs.create {url: url}
+}

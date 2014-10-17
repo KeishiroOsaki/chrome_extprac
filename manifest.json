@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
-    "name": "third",
+    "name": "fourth",
     "version": "1.0",
 
-    "description": "third sample",
+    "description": "fourth sample",
 
     "icons": {
         "16": "icons/icon.png",
@@ -11,13 +11,10 @@
     },
 
     "permissions": [
-        "tabs", "http://*/*"
+        "tabs", "https://*/*", "contextMenus"
     ],
 
-    "content_scripts": [
-        {
-            "matches": ["https://www.google.co.jp/*"],
-            "js": ["myscript.js"]
-        }
-    ]
+    "background": {
+        "scripts": ["background.js"]
+    }
 }

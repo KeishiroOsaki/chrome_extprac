@@ -1,14 +1,16 @@
 (function() {
-  chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (tab.url.indexOf('google') !== -1) {
-      return chrome.pageAction.show(tabId);
+  chrome.contextMenus.create({
+    "title": "\"%s\"をALCで検索",
+    "type": "normal",
+    "contexts": ["selection"],
+    "onclick": function(info) {
+      var keyword, url;
+      keyword = encodeURIComponent(info.selectionText);
+      url = "http://eow.alc.co.jp/search?q=" + keyword + "&ref=sa";
+      return chrome.tabs.create({
+        url: url
+      });
     }
-  });
-
-  chrome.pageAction.onClicked.addListener(function() {
-    return chrome.tabs.executeScript(null, {
-      "code": "document.body.style.backgroundColor = 'red'"
-    });
   });
 
 }).call(this);
