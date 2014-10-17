@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "first",
+    "version": "1.0",
+
+    "description": "first sample",
+
+    "icons": {
+        "16": "icons/icon.png",
+        "48": "icons/icon.png"
+    },
+
+    "browser_action": {
+        "default_icon": "icons/icon.png", 
+        "default_title": "first sample",
+        "default_popup": "popup.html"
+    }
+}
